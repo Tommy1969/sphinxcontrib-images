@@ -23,6 +23,7 @@ from sphinx.util.osutil import copyfile
 from docutils.parsers.rst import Directive
 from sphinx.util.console import brown
 from sphinx.util.osutil import ensuredir
+from sphinx.util import status_iterator
 
 from docutils import nodes, utils
 from docutils.parsers.rst import roles
@@ -205,7 +206,7 @@ def install_backend_static_files(app, env):
                              app.sphinxcontrib_images_backend.__class__.__name__)
     files_to_copy = app.sphinxcontrib_images_backend.STATIC_FILES
 
-    for source_file_path in app.builder.status_iterator(
+    for source_file_path in status_iterator(
         files_to_copy,
         'Copying static files for sphinxcontrib-images...',
         brown, len(files_to_copy)):
@@ -229,7 +230,7 @@ def install_backend_static_files(app, env):
 
 def download_images(app, env):
     conf = app.config.images_config
-    for src in app.builder.status_iterator(env.remote_images,
+    for src in status_iterator(env.remote_images,
                                            'Downloading remote images...',
                                            brown, len(env.remote_images)):
         dst = os.path.join(env.srcdir, env.remote_images[src])

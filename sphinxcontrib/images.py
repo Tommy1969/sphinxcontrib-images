@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__version__ = '0.7.0'
+__version__ = '0.7.1'
 __author__ = 'Tomasz Czyż <tomaszczyz@gmail.com>'
 __license__ = "Apache 2"
 
@@ -20,7 +20,7 @@ import sphinx
 from sphinx.locale import _
 from sphinx.environment import NoUri
 from sphinx.util.osutil import copyfile
-from sphinx.util.compat import Directive
+from docutils.parsers.rst import Directive
 from sphinx.util.console import brown
 from sphinx.util.osutil import ensuredir
 
